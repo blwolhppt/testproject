@@ -27,3 +27,9 @@ class OrganizationsSerializer(serializers.ModelSerializer):
         shops = Shop.objects.filter(organization_id=organization.id,
                                     is_deleted=False)
         return ShopsInOrganizationSerializer(shops, many=True).data
+
+
+class DownloadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Shop
+        fields = ('id', 'name')

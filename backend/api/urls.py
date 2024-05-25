@@ -8,7 +8,6 @@ router = SimpleRouter()
 router.register('organizations', views.OrganizationsViewSet)
 router.register('shops', views.ShopsViewSet)
 
-
 urlpatterns = [
     path('', include(router.urls)),
 ]

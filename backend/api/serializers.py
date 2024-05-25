@@ -7,6 +7,12 @@ from rest_framework import serializers
 class ShopsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Shop
+        fields = '__all__'
+
+
+class ShopsInOrganizationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Shop
         fields = ('name', 'description', 'address', 'index')
 
 
@@ -20,4 +26,4 @@ class OrganizationsSerializer(serializers.ModelSerializer):
     def get_shops(self, organization):
         shops = Shop.objects.filter(organization_id=organization.id,
                                     is_deleted=False)
-        return ShopsSerializer(shops, many=True).data
+        return ShopsInOrganizationSerializer(shops, many=True).data

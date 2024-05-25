@@ -2,8 +2,10 @@ from io import BytesIO
 
 import pandas as pd
 from django.http import HttpResponse
-from rest_framework import viewsets
+from django.shortcuts import get_object_or_404
+from rest_framework import viewsets, status
 from rest_framework.decorators import action
+from rest_framework.response import Response
 
 from shop.models import Organization, Shop
 from api import serializers
@@ -40,4 +42,12 @@ class ShopsViewSet(viewsets.ModelViewSet):
     queryset = Shop.objects.all()
     serializer_class = serializers.ShopsSerializer
 
-    # http_method_names = ['get', 'put', 'delete', 'patch']
+    http_method_names = ['get', 'put']
+
+    def put(self, request, pk):
+        shop = get_object_or_404(Shop, id=pk)
+        serializer = serializers.ShopSerializer(shop, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(status=status.HTTP_400_BAD_REQUEST)

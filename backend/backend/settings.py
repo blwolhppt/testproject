@@ -1,6 +1,7 @@
 from pathlib import Path
 from datetime import timedelta
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-h4pn!&ree3asop*hcrp*s4dt5*wszwlg1m)ri2x#a!v(p1hwu_'
@@ -21,7 +22,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_spectacular',
     'rest_framework_simplejwt',
-    'djoser'
+    'djoser',
 ]
 
 MIDDLEWARE = [

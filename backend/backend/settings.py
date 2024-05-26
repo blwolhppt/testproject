@@ -1,7 +1,10 @@
 import os
+from dotenv import load_dotenv
 from pathlib import Path
 from datetime import timedelta
 
+
+load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-h4pn!&ree3asop*hcrp*s4dt5*wszwlg1m)ri2x#a!v(p1hwu_'
@@ -109,8 +112,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'obelova2003@yandex.ru'
-EMAIL_HOST_PASSWORD = 'haJxuf-zagson-6kuvvy'
-DEFAULT_FROM_EMAIL = 'obelova2003@yandex.ru'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
 
 LOGIN_REDIRECT_URL = '/admin'

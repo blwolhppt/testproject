@@ -1,7 +1,6 @@
 from pathlib import Path
 from datetime import timedelta
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-h4pn!&ree3asop*hcrp*s4dt5*wszwlg1m)ri2x#a!v(p1hwu_'
@@ -23,6 +22,7 @@ INSTALLED_APPS = [
     'drf_spectacular',
     'rest_framework_simplejwt',
     'djoser',
+    'background_task',
 ]
 
 MIDDLEWARE = [
@@ -102,3 +102,11 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'obelova2003@yandex.ru'
+EMAIL_HOST_PASSWORD = 'haJxuf-zagson-6kuvvy'
+DEFAULT_FROM_EMAIL = 'obelova2003@yandex.ru'

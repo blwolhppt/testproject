@@ -10,6 +10,9 @@ from rest_framework.response import Response
 from shop.models import Organization, Shop
 from api import serializers
 
+from django.core.mail import send_mail
+from api.send_email import send_email_task
+
 
 class OrganizationsViewSet(viewsets.ModelViewSet):
     queryset = Organization.objects.all()
@@ -44,9 +47,11 @@ class ShopsViewSet(viewsets.ModelViewSet):
 
     http_method_names = ['get', 'put']
 
-    def put(self, request, pk):
+
+    def update(self, request, pk):
         shop = get_object_or_404(Shop, id=pk)
-        serializer = serializers.ShopSerializer(shop, data=request.data)
+        serializer = serializers.ShopsSerializer(shop, data=request.data)
+        send_email_task()
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

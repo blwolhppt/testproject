@@ -304,6 +304,19 @@ files = [
 ]
 
 [[package]]
+name = "django4-background-tasks"
+version = "1.2.9"
+description = "Database backed asynchronous task queue"
+optional = false
+python-versions = "*"
+files = [
+    {file = "django4-background-tasks-1.2.9.tar.gz", hash = "sha256:a27ddec8a0c850e5eedeef4767dacd067657aeb484c7e83593daf59c16433ce2"},
+]
+
+[package.dependencies]
+six = "*"
+
+[[package]]
 name = "djangorestframework"
 version = "3.15.1"
 description = "Web APIs for Django, made easy."
@@ -542,7 +555,7 @@ files = [
 ]
 
 [package.dependencies]
-numpy = {version = ">=1.26.0", markers = "python_version >= \"3.12\""}
+numpy = {version = ">=1.23.2", markers = "python_version == \"3.11\""}
 python-dateutil = ">=2.8.2"
 pytz = ">=2020.1"
 tzdata = ">=2022.7"
@@ -984,5 +997,5 @@ zstd = ["zstandard (>=0.18.0)"]
 
 [metadata]
 lock-version = "2.0"
-python-versions = "3.12.2"
-content-hash = "b50d4a9319308ca1c2733691740ebd40500ae2b697761b03e5f1d31ce5f62c03"
+python-versions = "3.11.0"
+content-hash = "ca8cb812b9137945a2a5b77601c6a8d54d7d7f79f67432fbb0a749d919ad989c"

@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from datetime import timedelta
 
@@ -40,7 +41,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'backend', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -110,3 +111,5 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'obelova2003@yandex.ru'
 EMAIL_HOST_PASSWORD = 'haJxuf-zagson-6kuvvy'
 DEFAULT_FROM_EMAIL = 'obelova2003@yandex.ru'
+
+LOGIN_REDIRECT_URL = '/admin'
